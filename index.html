@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- is this correct?-->
+    <title>Meme Generator</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body onload="init()">
+    <header>
+        <h1>Meme Generator</h1>
+    </header>
+    
+    <main>
+        <section class="gallery-section">
+            <h2>Gallery</h2>
+            <div class="gallery-container"></div>
+        </section>
+
+        <section class="editor-section">
+            <h2>Meme Editor</h2>
+            <div class="editor-container">
+                <canvas class="meme-canvas" width="500" height="500"></canvas>
+                <div class="controls">
+                    <input type="text" class="text-input" placeholder="Enter text here" oninput="onTextInputChange(ev)">
+                    <input type="color" class="color-picker" value="#000000" onchange="onColorPickerChange(ev)">
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="js/services/meme-service.js"></script>
+    <script src="js/meme-controller.js"></script>
+    <script src="js/services/gallery-service.js"></script>
+    <script src="js/gallery-controller.js"></script>
+</body>
+
+</html>
