@@ -21,3 +21,13 @@ let gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
 function getImg(imgId) {
     return gImgs.find(img => img.id === imgId)
 }
+
+// function getMeme() {
+//     return gMeme
+// }
+
+
+function setLineTxt(txt) {
+    const selectedLine = gMeme.lines[gMeme.selectedLineIdx]
+    selectedLine.txt = txt
+}

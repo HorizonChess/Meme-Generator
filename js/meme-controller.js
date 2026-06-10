@@ -27,6 +27,11 @@ function renderMeme() {
         // console.log('image loaded')
         gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height)
         gCtx.drawImage(elImage, 0, 0, gElCanvas.width, gElCanvas.height)
+
+        const selectedLine = gMeme.lines[gMeme.selectedLineIdx]
+        gCtx.font = `${selectedLine.size}px Arial`
+        gCtx.fillStyle = selectedLine.color
+        gCtx.fillText(selectedLine.txt, 50, 50)
     }
 
     // elImage.onerror = () => {
@@ -35,4 +40,10 @@ function renderMeme() {
 
     elImage.src = img.url
     // console.log('image src set to:', img.url)
+}
+
+function onTextInputChange(ev) {
+    const txt = ev.target.value
+    setLineTxt(txt)
+    renderMeme()
 }
