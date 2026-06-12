@@ -1,8 +1,8 @@
-let gImgs = [{
-    id: 1,
-    url: 'resources/meme-imgs-square/1.jpg',
+let gImgs = Array.from({ length: 18 }, (_, i) => ({
+    id: i + 1,
+    url: `resources/meme-imgs-square/${i + 1}.jpg`,
     keywords: ['funny', 'cat']
-}]
+}))
 
 let gMeme = {
     selectedImgId: 1,
@@ -22,9 +22,6 @@ function getImg(imgId) {
     return gImgs.find(img => img.id === imgId)
 }
 
-// function getMeme() {
-//     return gMeme
-// }
 
 
 function setLineTxt(txt) {

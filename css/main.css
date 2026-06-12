@@ -37,10 +37,15 @@ main {
     text-align: center;
 }
 
-
-/* .gallery-img {
+.gallery-container {
+    margin: 2.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 10px;
+}
+ .gallery-img {
+    margin: 5px;
     width: 100%;
-    height: fit-content;
     object-fit: cover;
     border-radius: 6px;
     cursor: pointer;
@@ -55,4 +60,4 @@ main {
 .gallery-img.selected {
     border: 3px solid #007bff;
     box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
-} */
+} 

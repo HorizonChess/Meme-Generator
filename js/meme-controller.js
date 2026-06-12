@@ -14,17 +14,13 @@ function resizeCanvas() {
 }
 
 function renderMeme() {
-    // console.log('renderMeme called')
-    // console.log('gMeme:', gMeme)
-    // console.log('gElCanvas:', gElCanvas)
-    // console.log('gCtx:', gCtx)
+
 
     const img = getImg(gMeme.selectedImgId)
-    // console.log('img:', img)
+
     const elImage = new Image()
 
     elImage.onload = () => {
-        // console.log('image loaded')
         gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height)
         gCtx.drawImage(elImage, 0, 0, gElCanvas.width, gElCanvas.height)
 
@@ -33,13 +29,9 @@ function renderMeme() {
         gCtx.fillStyle = selectedLine.color
         gCtx.fillText(selectedLine.txt, 50, 50)
     }
-
-    // elImage.onerror = () => {
-    //     console.error('Failed to load image:', img.url)
-    // }
-
+    
     elImage.src = img.url
-    // console.log('image src set to:', img.url)
+  
 }
 
 function onTextInputChange(ev) {
