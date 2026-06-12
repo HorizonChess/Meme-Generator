@@ -5,9 +5,15 @@ function renderGallery() {
         `<img src="${img.url}"
             class="gallery-img"
             data-id="${img.id}"
-            onclick="onSelectImg(this)"
+            onclick="onImgSelect(this)"
             alt="Meme image">`
     ).join('')
 
     elGallery.innerHTML = galleryHtml
+}
+
+function onImgSelect(elImg) {
+    const imgId = +elImg.dataset.id
+    setImg(imgId)
+    renderMeme()
 }

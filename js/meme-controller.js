@@ -15,9 +15,9 @@ function resizeCanvas() {
 
 function renderMeme() {
 
+if (!gMeme.selectedImgId) return
 
     const img = getImg(gMeme.selectedImgId)
-
     const elImage = new Image()
 
     elImage.onload = () => {
@@ -29,7 +29,7 @@ function renderMeme() {
         gCtx.fillStyle = selectedLine.color
         gCtx.fillText(selectedLine.txt, 50, 50)
     }
-    
+
     elImage.src = img.url
   
 }
