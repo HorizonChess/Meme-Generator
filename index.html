@@ -22,10 +22,17 @@
         <section class="editor-section">
             <h2>Meme Editor</h2>
             <div class="editor-container">
-                <canvas class="meme-canvas" width="500" height="500"></canvas>
+                <canvas class="meme-canvas"></canvas>
+
                 <div class="controls">
-                    <input type="text" class="text-input" placeholder="Enter text here" oninput="onTextInputChange(event)">
+                    <span>Top-Line:</span>
+                    <input type="text" class="text-input" placeholder="Enter text here"
+                        oninput="onTextInputChange(event,0)">
+                    <span>Color-Picker:</span>
                     <input type="color" class="color-picker" value="#000000" onchange="onColorPickerChange(event)">
+                    <span>Bottom-Line:</span>
+                    <input type="text" class="text-input" placeholder="Enter text here"
+                        oninput="onTextInputChange(event,1)">
                 </div>
             </div>
         </section>

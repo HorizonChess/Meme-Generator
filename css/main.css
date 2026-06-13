@@ -25,17 +25,24 @@ main {
 
 }
 
+.editor-section h2 {
+    margin: 2rem;
+    padding-top: 16px;
+    text-align: center;
+}
+
+.editor-container {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+
 .gallery-section h2 {
     margin: 2rem;
     padding-top: 16px;
     text-align: center;
 }
 
-.editor-section h2 {
-    margin: 2rem;
-    padding-top: 16px;
-    text-align: center;
-}
 
 .gallery-container {
     margin: 2.5rem;
@@ -43,7 +50,8 @@ main {
     grid-template-columns: 1fr 1fr 1fr;
     column-gap: 10px;
 }
- .gallery-img {
+
+.gallery-img {
     margin: 5px;
     width: 100%;
     object-fit: cover;
@@ -60,4 +68,51 @@ main {
 .gallery-img.selected {
     border: 3px solid #007bff;
     box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
-} 
+}
+
+.meme-canvas {
+    border-radius: 2%;
+    padding: 10px;
+    background-color: orange;
+    width: 100%;
+}
+
+.controls span {
+    display: inline-block;
+    text-align: right;
+    width: 100px;
+    margin-right: 10px;
+
+}
+
+
+.color-picker {
+    width: 30px;
+    height: 30px;
+    border: 2px solid #ccc;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+
+.color-picker::-webkit-color-swatch-wrapper {
+    padding: 0;
+}
+
+.color-picker::-webkit-color-swatch {
+    border: none;
+    border-radius: 50%;
+}
+
+.color-picker:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.text-input {
+    border: 2px, black, solid;
+    height: 26px;
+    margin: 8px;
+    padding: 6px;
+}

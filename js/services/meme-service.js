@@ -10,11 +10,17 @@ let gMeme = {
     selectedLineIdx: 0,
     lines: [
         {
-            txt: 'I sometimes eat Falafel',
-            size: 20,
-            color: 'red'
+            txt: `I don't always write great CSS`,
+            size: 24,
+            color: 'white'
+        }
+        , {
+            txt: `But when i do, it's cause i saw it somewhere`,
+            size: 24,
+            color: 'white'
         }
     ]
+
 }
 let gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
 
@@ -28,7 +34,16 @@ function setImg(imgId) {
     gMeme.selectedImgId = imgId
 }
 
+function setSelectedLine(idx) {
+    gMeme.selectedLineIdx = idx
+}
+
 function setLineTxt(txt) {
     const selectedLine = gMeme.lines[gMeme.selectedLineIdx]
-    selectedLine.txt = txt
+    selectedLine.txt = txt.toUpperCase()
+}
+
+
+function setColor(color) {
+    gMeme.lines[gMeme.selectedLineIdx].color = color
 }
