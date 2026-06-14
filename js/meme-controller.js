@@ -54,3 +54,14 @@ function onColorPickerChange(ev) {
     setColor(color)
     renderMeme()
 }
+
+function onFontSizeChange(ev) {
+    const size = ev.target.value
+    setFontSize(size)
+    renderMeme()
+}
+
+function onDownloadCanvas(elLink) {
+	elLink.href = gCanvas.toDataURL()
+	elLink.download = 'my-img'
+}

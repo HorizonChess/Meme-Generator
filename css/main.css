@@ -79,7 +79,6 @@ main {
 
 .controls span {
     display: inline-block;
-    text-align: right;
     width: 100px;
     margin-right: 10px;
 
@@ -115,4 +114,8 @@ main {
     height: 26px;
     margin: 8px;
     padding: 6px;
+    text-align: right;
+}
+.font-size, .color-picker {
+    align-self: flex-start;
 }

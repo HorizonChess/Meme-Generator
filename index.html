@@ -29,11 +29,17 @@
                     <input type="text" class="text-input" placeholder="Enter text here"
                         oninput="onTextInputChange(event,0)">
                     <span>Color-Picker:</span>
-                    <input type="color" class="color-picker" value="#000000" onchange="onColorPickerChange(event)">
+                    <input type="color" class="color-picker" value="white" onchange="onColorPickerChange(event)">
                     <span>Bottom-Line:</span>
                     <input type="text" class="text-input" placeholder="Enter text here"
                         oninput="onTextInputChange(event,1)">
+                    <span>Font Size:</span>
+                    <input type="number" class="font-size" value="24" min="8" max="42" step="1"
+                        onchange="onFontSizeChange(event)">
                 </div>
+                <p>
+                    <a href="#" onclick="onDownloadCanvas(this)">Download Meme</a>
+                </p>
             </div>
         </section>
 

@@ -22,6 +22,7 @@ let gMeme = {
     ]
 
 }
+
 let gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
 
 
@@ -29,10 +30,6 @@ function getImg(imgId) {
     return gImgs.find(img => img.id === imgId)
 }
 
-
-function setImg(imgId) {
-    gMeme.selectedImgId = imgId
-}
 
 function setSelectedLine(idx) {
     gMeme.selectedLineIdx = idx
@@ -46,4 +43,8 @@ function setLineTxt(txt) {
 
 function setColor(color) {
     gMeme.lines[gMeme.selectedLineIdx].color = color
+}
+
+function setFontSize(size) {
+    gMeme.lines[gMeme.selectedLineIdx].size = size
 }
