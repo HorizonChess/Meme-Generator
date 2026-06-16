@@ -11,12 +11,7 @@ let gMeme = {
     lines: [
         {
             txt: `I don't always write great CSS`,
-            size: 24,
-            color: 'white'
-        }
-        , {
-            txt: `But when i do, it's cause i saw it somewhere`,
-            size: 24,
+            size: 22,
             color: 'white'
         }
     ]
@@ -24,6 +19,15 @@ let gMeme = {
 }
 
 let gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
+
+function addLine() {
+    const line = {
+        txt: `But when i do, it's cause i saw it somewhere`,
+        size: 22,
+        color: 'white'
+    }
+    gMeme.lines.push(line)
+}
 
 
 function getImg(imgId) {
@@ -42,9 +46,9 @@ function setLineTxt(txt) {
 
 
 function setColor(color) {
-    gMeme.lines[gMeme.selectedLineIdx].color = color
+    gMeme.lines.forEach(line => line.color = color)
 }
 
 function setFontSize(size) {
-    gMeme.lines[gMeme.selectedLineIdx].size = size
+    gMeme.lines.forEach(line => line.size = size)
 }

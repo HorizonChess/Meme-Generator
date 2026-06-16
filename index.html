@@ -25,17 +25,19 @@
                 <canvas class="meme-canvas"></canvas>
 
                 <div class="controls">
-                    <span>Top-Line:</span>
-                    <input type="text" class="text-input" placeholder="Enter text here"
-                        oninput="onTextInputChange(event,0)">
-                    <span>Color-Picker:</span>
-                    <input type="color" class="color-picker" value="white" onchange="onColorPickerChange(event)">
-                    <span>Bottom-Line:</span>
-                    <input type="text" class="text-input" placeholder="Enter text here"
-                        oninput="onTextInputChange(event,1)">
-                    <span>Font Size:</span>
-                    <input type="number" class="font-size" value="24" min="8" max="42" step="1"
-                        onchange="onFontSizeChange(event)">
+                    <div class="controls-lines">
+                        <span>Line 1:</span>
+                        <input type="text" class="text-input" placeholder="Enter text here"
+                            oninput="onTextInputChange(event,0)">
+                    </div>
+                    <div class="controls-side">
+                        <span>Color-Picker:</span>
+                        <input type="color" class="color-picker" value="white" onchange="onColorPickerChange(event)">
+                        <span>Font Size:</span>
+                        <input type="number" class="font-size" value="24" min="8" max="42" step="1"
+                            onchange="onFontSizeChange(event)">
+                        <button class="add-line" onclick="onAddLine()">Add line</button>
+                    </div>
                 </div>
                 <p>
                     <a href="#" onclick="onDownloadCanvas(this)">Download Meme</a>

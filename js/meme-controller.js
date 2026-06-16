@@ -7,7 +7,6 @@ function initCanvas() {
     gCtx = gElCanvas.getContext('2d')
 
     addEventListener('resize', () => {
-        console.log('resizing')
         resizeCanvas()
         renderMeme()
     })
@@ -15,7 +14,7 @@ function initCanvas() {
 
 function resizeCanvas() {
     const elContainer = document.querySelector('.editor-container')
-    gElCanvas.width = elContainer.clientWidth
+    gElCanvas.width = elContainer.offsetWidth
     gElCanvas.height = gElCanvas.width
 }
 
@@ -62,6 +61,20 @@ function onFontSizeChange(ev) {
 }
 
 function onDownloadCanvas(elLink) {
-	elLink.href = gCanvas.toDataURL()
-	elLink.download = 'my-img'
+    elLink.href = gCanvas.toDataURL()
+    elLink.download = 'my-img'
+}
+
+function onAddLine() {
+    let idx = gMeme.lines.length - 1
+    const lineHtml = `<span>Line ${idx + 1}:</span>
+     <input type="text" class="text-input"
+     placeholder="Enter text here"
+    oninput="onTextInputChange(event,${idx + 1})">`
+    const elControls = document.querySelector('.controls-lines')
+    elControls.insertAdjacentHTML('beforeend', lineHtml)
+
+    addLine()
+    renderMeme()
+
 }
