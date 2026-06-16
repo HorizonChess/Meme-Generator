@@ -1,9 +1,4 @@
 
-let gImgs = Array.from({ length: 18 }, (_, i) => ({
-    id: i + 1,
-    url: `resources/meme-imgs-square/${i + 1}.jpg`,
-    keywords: ['funny', 'cat']
-}))
 
 let gMeme = {
     selectedImgId: null,
@@ -22,7 +17,7 @@ let gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
 
 function addLine() {
     const line = {
-        txt: `But when i do, it's cause i saw it somewhere`,
+        txt: ``,
         size: 22,
         color: 'white'
     }
@@ -39,6 +34,11 @@ function setSelectedLine(idx) {
     gMeme.selectedLineIdx = idx
 }
 
+function switchLine() {
+    const lastIdx = gMeme.lines.length - 1
+    gMeme.selectedLineIdx = gMeme.selectedLineIdx === lastIdx ? 0 : gMeme.selectedLineIdx + 1
+}
+
 function setLineTxt(txt) {
     const selectedLine = gMeme.lines[gMeme.selectedLineIdx]
     selectedLine.txt = txt.toUpperCase()
@@ -50,5 +50,5 @@ function setColor(color) {
 }
 
 function setFontSize(size) {
-    gMeme.lines.forEach(line => line.size = size)
+    gMeme.lines.forEach(line => line.size = +size)
 }

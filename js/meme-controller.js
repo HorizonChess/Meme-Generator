@@ -1,6 +1,7 @@
 
 let gElCanvas
 let gCtx
+let gImg
 
 function initCanvas() {
     gElCanvas = document.querySelector('.meme-canvas')
@@ -19,36 +20,58 @@ function resizeCanvas() {
 }
 
 function renderMeme() {
-
     if (!gMeme.selectedImgId) return
 
     const img = getImg(gMeme.selectedImgId)
     const elImage = new Image()
 
     elImage.onload = () => {
-        gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height)
-        gCtx.drawImage(elImage, 0, 0, gElCanvas.width, gElCanvas.height)
-
-        gMeme.lines.forEach((line, idx) => {
-            gCtx.font = `${line.size}px Arial`
-            gCtx.fillStyle = line.color
-            gCtx.fillText(line.txt.toUpperCase(), 50, 50 + idx * (gElCanvas.height / gMeme.lines.length))
-        })
+        gImg = elImage
+        drawMeme(elImage, true)
     }
 
-
     elImage.src = img.url
+}
 
+function drawMeme(elImage, showHighlight) {
+    gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height)
+    gCtx.drawImage(elImage, 0, 0, gElCanvas.width, gElCanvas.height)
+
+    gMeme.lines.forEach((line, idx) => {
+        const x = 50
+        const y = 50 + idx * (gElCanvas.height / gMeme.lines.length)
+
+        gCtx.font = `${line.size}px Arial`
+        gCtx.fillStyle = line.color
+        const txt = line.txt.toUpperCase()
+        gCtx.fillText(txt, x, y)
+
+        if (showHighlight && idx === gMeme.selectedLineIdx) {
+            drawFrame(x, y, gCtx.measureText(txt).width, line.size)
+        }
+    })
+}
+
+function drawFrame(x, y, txtWidth, fontSize) {
+    const pad = 5
+    gCtx.strokeStyle = 'gold'
+    gCtx.lineWidth = 2
+    gCtx.strokeRect(x - pad, y - fontSize, txtWidth + pad * 2, fontSize + pad * 2)
 }
 
 function onTextInputChange(ev, idx) {
-    let txt = ev.target.value
+    const txt = ev.target.value
     if (gCtx.measureText(txt.toUpperCase()).width > gElCanvas.width - 50) {
         ev.target.value = ev.target.value.slice(0, -1)
         return
     }
     gMeme.selectedLineIdx = idx
     setLineTxt(txt)
+    renderMeme()
+}
+
+function onSwitchLine() {
+    switchLine()
     renderMeme()
 }
 
@@ -65,8 +88,12 @@ function onFontSizeChange(ev) {
 }
 
 function onDownloadCanvas(elLink) {
-    elLink.href = gCanvas.toDataURL()
+    if (!gImg) return
+
+    drawMeme(gImg, false)
+    elLink.href = gElCanvas.toDataURL()
     elLink.download = 'my-img'
+    drawMeme(gImg, true)
 }
 
 function onAddLine() {
