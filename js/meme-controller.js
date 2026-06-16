@@ -32,7 +32,7 @@ function renderMeme() {
         gMeme.lines.forEach((line, idx) => {
             gCtx.font = `${line.size}px Arial`
             gCtx.fillStyle = line.color
-            gCtx.fillText(line.txt.toUpperCase(), 50, 50 + idx * 350)
+            gCtx.fillText(line.txt.toUpperCase(), 50, 50 + idx * (gElCanvas.height / gMeme.lines.length))
         })
     }
 
@@ -42,7 +42,11 @@ function renderMeme() {
 }
 
 function onTextInputChange(ev, idx) {
-    const txt = ev.target.value
+    let txt = ev.target.value
+    if (gCtx.measureText(txt.toUpperCase()).width > gElCanvas.width - 50) {
+        ev.target.value = ev.target.value.slice(0, -1)
+        return
+    }
     gMeme.selectedLineIdx = idx
     setLineTxt(txt)
     renderMeme()
@@ -66,15 +70,15 @@ function onDownloadCanvas(elLink) {
 }
 
 function onAddLine() {
+    addLine()
     let idx = gMeme.lines.length - 1
     const lineHtml = `<span>Line ${idx + 1}:</span>
      <input type="text" class="text-input"
      placeholder="Enter text here"
-    oninput="onTextInputChange(event,${idx + 1})">`
+    oninput="onTextInputChange(event,${idx})">`
     const elControls = document.querySelector('.controls-lines')
     elControls.insertAdjacentHTML('beforeend', lineHtml)
 
-    addLine()
     renderMeme()
 
 }
