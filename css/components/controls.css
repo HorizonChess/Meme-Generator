@@ -19,12 +19,28 @@
     gap: 8px;
 }
 
+/* light pill, dark centered text (exact PSD values) */
 .text-input {
     height: 40px;
     padding: 8px 14px;
     border: none;
     border-radius: 10px;
     text-align: center;
+
+    background-color: #f1f1f1;
+    color: #3d3d3d;
+    font-family: "Poppins", Arial, sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.text-input::placeholder {
+    color: #3d3d3d;
+    opacity: 0.6;
+}
+
+.text-input:focus {
+    outline: 2px solid var(--clr-accent);
 }
 
 /* row 2: action buttons (switch / add) */
@@ -63,6 +79,10 @@
 
 .add-line {
     background-color: #22c55e;
+}
+
+.delete-line {
+    background-color: #ef4444;
 }
 
 .controls-side {

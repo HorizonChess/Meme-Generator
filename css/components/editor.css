@@ -13,8 +13,17 @@
     width: 100%;
 }
 
-/* width/height are set by resizeCanvas() */
+/* the width/height ATTRIBUTES (pixel buffer) are set by resizeCanvas().
+   these CSS rules control DISPLAY size: filling the container without the
+   canvas's intrinsic buffer size forcing the grid column to grow. without
+   `width: 100%` the canvas can't shrink back when the window narrows. */
 .meme-canvas {
+    display: block;
+    width: 100%;
+    height: auto;
+    /* opt out of native touch gestures so dragging a line isn't hijacked by
+       the browser's scroll/zoom on mobile (otherwise touchmove gets cancelled) */
+    touch-action: none;
     border-radius: var(--radius-canvas);
     background-color: #ffffff;
     border: 6px solid rgba(235, 238, 243, 0.09);

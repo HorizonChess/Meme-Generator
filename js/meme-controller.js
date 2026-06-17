@@ -2,15 +2,83 @@
 let gElCanvas
 let gCtx
 let gImg
+let gIsDragging = false
+let gDragOffset = { x: 0, y: 0 }   // grab point relative to the line origin
 
 function initCanvas() {
     gElCanvas = document.querySelector('.meme-canvas')
     gCtx = gElCanvas.getContext('2d')
+    addListeners()
+}
+
+function addListeners() {
+    addMouseListeners()
+    addTouchListeners()
 
     addEventListener('resize', () => {
         resizeCanvas()
         renderMeme()
     })
+}
+
+function addMouseListeners() {
+    gElCanvas.addEventListener('mousedown', onDown)
+    gElCanvas.addEventListener('mousemove', onMove)
+    addEventListener('mouseup', onUp)
+}
+
+function addTouchListeners() {
+    // passive: false so we can preventDefault the page scroll while dragging
+    gElCanvas.addEventListener('touchstart', onDown, { passive: false })
+    gElCanvas.addEventListener('touchmove', onMove, { passive: false })
+    addEventListener('touchend', onUp)
+}
+
+// index of the topmost line under pos, or -1 (topmost first for stacked lines)
+function getLineIdxAt(pos) {
+    for (let idx = gMeme.lines.length - 1; idx >= 0; idx--) {
+        if (isInsideBox(pos, gMeme.lines[idx].box)) return idx
+    }
+    return -1
+}
+
+function onDown(ev) {
+    const pos = getEvPos(ev, gElCanvas)
+    const idx = getLineIdxAt(pos)
+    if (idx === -1) return   // nothing grabbed: let the event behave normally
+
+    ev.preventDefault()
+    setSelectedLine(idx)
+    updateTextInput()
+    gIsDragging = true
+
+    const line = gMeme.lines[idx]
+    const originX = line.x !== null ? line.x : line.box.x + 5
+    const originY = line.y !== null ? line.y : line.box.y + line.size
+    gDragOffset = { x: pos.x - originX, y: pos.y - originY }
+
+    gElCanvas.style.cursor = 'grabbing'
+    renderMeme()
+}
+
+function onMove(ev) {
+    const pos = getEvPos(ev, gElCanvas)
+
+    if (!gIsDragging) {
+        // hover feedback: grab cursor only while over a line
+        gElCanvas.style.cursor = getLineIdxAt(pos) === -1 ? 'default' : 'grab'
+        return
+    }
+
+    ev.preventDefault()
+    moveLine(pos.x - gDragOffset.x, pos.y - gDragOffset.y)
+    renderMeme()
+}
+
+function onUp() {
+    if (!gIsDragging) return
+    gIsDragging = false
+    gElCanvas.style.cursor = 'grab'
 }
 
 function resizeCanvas() {
@@ -38,25 +106,29 @@ function drawMeme(elImage, showHighlight) {
     gCtx.drawImage(elImage, 0, 0, gElCanvas.width, gElCanvas.height)
 
     gMeme.lines.forEach((line, idx) => {
-        const x = 50
-        const y = 50 + idx * (gElCanvas.height / gMeme.lines.length)
+        // use the dragged position if set, otherwise the index-based default
+        const x = line.x !== null ? line.x : 50
+        const y = line.y !== null ? line.y : 50 + idx * (gElCanvas.height / gMeme.lines.length)
 
         gCtx.font = `${line.size}px Arial`
         gCtx.fillStyle = line.color
         const txt = line.txt.toUpperCase()
         gCtx.fillText(txt, x, y)
 
+        // cache the rendered box (canvas space) so dragging can hit-test it
+        const txtWidth = gCtx.measureText(txt).width
+        line.box = { x: x - 5, y: y - line.size, width: txtWidth + 10, height: line.size + 10 }
+
         if (showHighlight && idx === gMeme.selectedLineIdx) {
-            drawFrame(x, y, gCtx.measureText(txt).width, line.size)
+            drawFrame(line.box)
         }
     })
 }
 
-function drawFrame(x, y, txtWidth, fontSize) {
-    const pad = 5
+function drawFrame(box) {
     gCtx.strokeStyle = 'gold'
     gCtx.lineWidth = 2
-    gCtx.strokeRect(x - pad, y - fontSize, txtWidth + pad * 2, fontSize + pad * 2)
+    gCtx.strokeRect(box.x, box.y, box.width, box.height)
 }
 
 function onTextInputChange(ev) {
@@ -107,4 +179,10 @@ function onAddLine() {
     updateTextInput()
     renderMeme()
 
+}
+
+function onDeleteLine() {
+    deleteLine()
+    updateTextInput()
+    renderMeme()
 }
