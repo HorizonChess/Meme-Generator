@@ -59,20 +59,26 @@ function drawFrame(x, y, txtWidth, fontSize) {
     gCtx.strokeRect(x - pad, y - fontSize, txtWidth + pad * 2, fontSize + pad * 2)
 }
 
-function onTextInputChange(ev, idx) {
+function onTextInputChange(ev) {
     const txt = ev.target.value
     if (gCtx.measureText(txt.toUpperCase()).width > gElCanvas.width - 50) {
         ev.target.value = ev.target.value.slice(0, -1)
         return
     }
-    gMeme.selectedLineIdx = idx
     setLineTxt(txt)
     renderMeme()
 }
 
 function onSwitchLine() {
     switchLine()
+    updateTextInput()
     renderMeme()
+}
+
+// reflect the selected line's text back into the single input
+function updateTextInput() {
+    const elInput = document.querySelector('.text-input')
+    elInput.value = gMeme.lines[gMeme.selectedLineIdx].txt
 }
 
 function onColorPickerChange(ev) {
@@ -97,14 +103,8 @@ function onDownloadCanvas(elLink) {
 
 function onAddLine() {
     addLine()
-    let idx = gMeme.lines.length - 1
-    const lineHtml = `<span>Line ${idx + 1}:</span>
-     <input type="text" class="text-input"
-     placeholder="Enter text here"
-    oninput="onTextInputChange(event,${idx})">`
-    const elControls = document.querySelector('.controls-lines')
-    elControls.insertAdjacentHTML('beforeend', lineHtml)
-
+    gMeme.selectedLineIdx = gMeme.lines.length - 1
+    updateTextInput()
     renderMeme()
 
 }
