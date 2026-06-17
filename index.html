@@ -12,6 +12,7 @@
 </head>
 
 <body onload="initCanvas(), resizeCanvas(), renderGallery()">
+
     <header class="main-header">
         <a class="logo" href="#">Meme-Generator</a>
         <nav class="main-nav">
@@ -20,13 +21,13 @@
             <button class="nav-toggle" aria-label="menu">&#9776;</button>
         </nav>
     </header>
-
+<!-- gallery section -->
     <main>
         <section class="gallery-section view">
-            <h2>Gallery</h2>
             <div class="gallery-container"></div>
         </section>
 
+        <!-- editor section -->
         <section class="editor-section view hidden">
             <div class="editor-layout">
                 <div class="editor-container">
@@ -40,28 +41,27 @@
                     </div>
 
                     <div class="controls-actions">
-                        <button class="icon-btn switch-line" onclick="onSwitchLine()" aria-label="Switch selected line"
-                            title="Switch selected line">
-                            <img src="resources/icons/up-and-down-opposite-double-arrows-side-by-side.png" alt="">
+                        <button class="icon-btn switch-line" onclick="onSwitchLine()" title="Switch selected line">
+                            <img src="resources/ICONS/up-and-down-opposite-double-arrows-side-by-side.png" alt="">
                         </button>
-                        <button class="icon-btn add-line" onclick="onAddLine()" aria-label="Add line" title="Add line">
-                            <img src="resources/icons/add.png" alt="">
+                        <button class="icon-btn add-line" onclick="onAddLine()" title="Add line">
+                            <img src="resources/ICONS/add.png" alt="">
                         </button>
                     </div>
 
                     <div class="controls-side">
-                        <button class="icon-btn font-decrease" onclick="onChangeFontSize(-2)" aria-label="Decrease font size"
+                        <button class="icon-btn font-decrease" onclick="onChangeFontSize(-2)"
                             title="Decrease font size">
-                            <img src="resources/icons/decrease font - icon.png" alt="">
+                            <img src="resources/ICONS/decrease font - icon.png" alt="">
                         </button>
-                        <button class="icon-btn font-increase" onclick="onChangeFontSize(2)" aria-label="Increase font size"
-                            title="Increase font size">
-                            <img src="resources/icons/increase font - icon.png" alt="">
+                        <button class="icon-btn font-increase" onclick="onChangeFontSize(2)" title="Increase font size">
+                            <img src="resources/ICONS/increase font - icon.png" alt="">
                         </button>
 
-                        <label class="icon-btn color-btn" aria-label="Text color" title="Text color">
+                        <label class="icon-btn color-btn" title="Text color">
                             <img src="resources/icons/paint-board-and-brush.png" alt="">
-                            <input type="color" class="color-picker" value="#ffffff" onchange="onColorPickerChange(event)">
+                            <input type="color" class="color-picker" value="#ffffff"
+                                onchange="onColorPickerChange(event)">
                         </label>
                     </div>
 

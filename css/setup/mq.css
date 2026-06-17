@@ -14,9 +14,13 @@
         display: inline-block;
     }
 
-    /* gallery grid goes from 3 to 2 columns (per gallery mobile.png) */
+    /* gallery grid goes from 5 to 2 columns (per gallery mobile.png).
+       tighter spacing so two squares fit comfortably on a phone. */
     .gallery-container {
         grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        margin: 1rem;
+        padding: 12px;
     }
 
     /* editor canvas + panel stack vertically */
@@ -25,19 +29,24 @@
     }
 }
 
-/* ===== finer breakpoints (to be addressed) ===== */
+/* ===== finer breakpoints =====
+   the design defines only two gallery layouts: 5-col (desktop) and
+   2-col (mobile, <=920px). these in-between steps just keep the
+   squares from getting cramped on the way down. */
 
-/* large (<=1060px) */
+/* large (<=1060px): 5 -> 4 columns */
 @media (max-width: 1060px) {
-    /* TODO */
+    .gallery-container {
+        grid-template-columns: repeat(4, 1fr);
+    }
 }
 
-/* medium (<=880px) */
-@media (max-width: 880px) {
-    /* TODO */
-}
+/* medium (<=880px): handled by the 2-col mobile rule above */
 
-/* small (<=600px) */
+/* small (<=600px): trim spacing for narrow phones */
 @media (max-width: 600px) {
-    /* TODO */
+    .gallery-container {
+        gap: 10px;
+        margin: 0.5rem;
+    }
 }
