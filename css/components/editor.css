@@ -1,4 +1,3 @@
-/* editor: canvas on the left, control panel on the right */
 .editor-layout {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -21,9 +20,6 @@
     display: block;
     width: 100%;
     height: auto;
-    /* opt out of native touch gestures so dragging a line isn't hijacked by
-       the browser's scroll/zoom on mobile (otherwise touchmove gets cancelled) */
-    touch-action: none;
     border-radius: var(--radius-canvas);
     background-color: #ffffff;
     border: 6px solid rgba(235, 238, 243, 0.09);

@@ -8,7 +8,6 @@ let gMeme = {
             txt: `I don't always write great CSS`,
             size: 22,
             color: 'white',
-            // position in CANVAS pixel space; null = let drawMeme place it by index
             x: null,
             y: null
         }
@@ -29,7 +28,6 @@ function addLine() {
     gMeme.lines.push(line)
 }
 
-// deletes the last line; keeps at least one line and a valid selection
 function deleteLine() {
     if (gMeme.lines.length <= 1) return
     gMeme.lines.pop()
@@ -37,7 +35,6 @@ function deleteLine() {
     if (gMeme.selectedLineIdx > lastIdx) gMeme.selectedLineIdx = lastIdx
 }
 
-// move the selected line to an absolute canvas-space position
 function moveLine(x, y) {
     const line = gMeme.lines[gMeme.selectedLineIdx]
     line.x = x

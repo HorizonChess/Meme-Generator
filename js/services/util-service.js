@@ -14,7 +14,6 @@ function getEvPos(ev, elCanvas) {
     }
 }
 
-// is a point inside an axis-aligned box { x, y, width, height }?
 function isInsideBox(pos, box) {
     if (!box) return false
     return pos.x >= box.x && pos.x <= box.x + box.width &&

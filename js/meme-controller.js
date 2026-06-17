@@ -34,12 +34,8 @@ function addTouchListeners() {
     addEventListener('touchend', onUp)
 }
 
-// index of the topmost line under pos, or -1 (topmost first for stacked lines)
 function getLineIdxAt(pos) {
-    for (let idx = gMeme.lines.length - 1; idx >= 0; idx--) {
-        if (isInsideBox(pos, gMeme.lines[idx].box)) return idx
-    }
-    return -1
+    return gMeme.lines.findIndex(line => isInsideBox(pos, line.box))
 }
 
 function onDown(ev) {
@@ -65,7 +61,6 @@ function onMove(ev) {
     const pos = getEvPos(ev, gElCanvas)
 
     if (!gIsDragging) {
-        // hover feedback: grab cursor only while over a line
         gElCanvas.style.cursor = getLineIdxAt(pos) === -1 ? 'default' : 'grab'
         return
     }
@@ -147,7 +142,6 @@ function onSwitchLine() {
     renderMeme()
 }
 
-// reflect the selected line's text back into the single input
 function updateTextInput() {
     const elInput = document.querySelector('.text-input')
     elInput.value = gMeme.lines[gMeme.selectedLineIdx].txt

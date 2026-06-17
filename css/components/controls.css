@@ -12,14 +12,12 @@
     font-weight: bold;
 }
 
-/* row 1: selected-line text input */
 .controls-lines {
     display: flex;
     flex-direction: column;
     gap: 8px;
 }
 
-/* light pill, dark centered text (exact PSD values) */
 .text-input {
     height: 40px;
     padding: 8px 14px;
@@ -72,7 +70,6 @@
     filter: brightness(0) invert(1);
 }
 
-/* TODO: replace with exact PSD hex values */
 .switch-line {
     background-color: #3b82f6;
 }
@@ -91,7 +88,6 @@
     align-items: center;
 }
 
-/*TODO: replace with exact PSD hex values */
 .font-decrease,
 .font-increase,
 .color-btn {
@@ -118,7 +114,6 @@
     cursor: pointer;
 }
 
-/* download button (exact PSD values) */
 .download-btn {
     display: flex;
     align-items: center;
