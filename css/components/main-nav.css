@@ -1,0 +1,36 @@
+/* desktop base: nav links shown, hamburger hidden.
+   mobile hides the links and shows the hamburger (see setup/mq.css). */
+
+.main-nav {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.nav-link {
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: var(--clr-text);
+    font-family: inherit;
+    font-size: 21px;
+    font-weight: 500;
+    padding: 8px 20px;
+    border-radius: 22px;
+}
+
+/* active link shows as a white pill with accent-green text (per design) */
+.nav-link.active {
+    background-color: #ffffff;
+    color: var(--clr-accent);
+}
+
+.nav-toggle {
+    display: none;
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: var(--clr-text);
+    font-size: 26px;
+    line-height: 1;
+}

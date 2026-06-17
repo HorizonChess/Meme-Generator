@@ -1,0 +1,38 @@
+:root {
+    /* ===== colors (from PSD via Photopea CSS panel) ===== */
+    /* app background, behind header + gallery container */
+    --clr-bg: #22252c;
+
+    /* header gradient */
+    --clr-header-start: #0b97b9;
+    --clr-header-end: #33bd6d;
+    --header-gradient: linear-gradient(-86deg, #33bd6d 0%, #0b97b9 100%);
+
+    /* accent green (active "Gallery" nav, search icon) */
+    --clr-accent: #21ac91;
+
+    /* TODO: confirm from PSD */
+    --clr-text: #ffffff;
+    --clr-text-muted: #9aa4b0;       /* TODO: exact muted label color */
+    --clr-panel: #2e3742;            /* TODO: gallery container bg */
+    --clr-card: #2e3742;             /* TODO: gallery image card bg/shadow */
+    --clr-more: var(--clr-accent);   /* TODO: exact "More" chip bg */
+
+    /* ===== radius ===== */
+    --radius-header: 37px;
+    --radius-card: 6px;              /* TODO: exact gallery card radius */
+
+    /* ===== spacing ===== */
+    --space-sm: 8px;
+    --space-md: 16px;
+    --space-lg: 2rem;
+
+    /* ===== breakpoints (reference only) =====
+       NOTE: CSS custom properties cannot be used inside @media queries,
+       so setup/mq.css hardcodes these px values. Kept here as the
+       single source of truth for what each number means. */
+    --bp-s: 600px;
+    --bp-m: 880px;
+    --bp-l: 1060px;
+    --bp-mobile: 920px;
+}

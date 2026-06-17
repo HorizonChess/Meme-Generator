@@ -1,0 +1,19 @@
+.main-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 36px;
+    height: 72px;
+    background-image: var(--header-gradient);
+    border-radius: var(--radius-header);
+}
+
+.logo {
+    color: var(--clr-text);
+    font-weight: 700;
+    font-size: 24px;
+    letter-spacing: 1px;
+    text-decoration: none;
+}

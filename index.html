@@ -5,12 +5,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- is this correct?-->
     <title>Meme Generator</title>
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body onload="initCanvas(), resizeCanvas(), renderGallery()">
-    <header>
-        <h1>Meme Generator</h1>
+    <header class="main-header">
+        <a class="logo" href="#">Meme-Generator</a>
+        <nav class="main-nav">
+            <button class="nav-link active">Gallery</button>
+            <button class="nav-link">About</button>
+            <button class="nav-toggle" aria-label="menu">&#9776;</button>
+        </nav>
     </header>
 
     <main>

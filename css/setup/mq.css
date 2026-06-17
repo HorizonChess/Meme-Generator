@@ -1,0 +1,43 @@
+/* mobile-last: base styles target desktop.
+   these max-width queries override down to smaller screens.
+   breakpoints mirror the --bp-* reference vars in setup/vars.css. */
+
+/* ===== mobile (<=920px) ===== */
+@media (max-width: 920px) {
+
+    /* hide nav links, show the hamburger */
+    .nav-link {
+        display: none;
+    }
+
+    .nav-toggle {
+        display: inline-block;
+    }
+
+    /* gallery and editor stack into a single column */
+    main {
+        grid-template-columns: 1fr;
+    }
+
+    /* gallery grid goes from 3 to 2 columns (per gallery mobile.png) */
+    .gallery-container {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* ===== finer breakpoints (to be addressed) ===== */
+
+/* large (<=1060px) */
+@media (max-width: 1060px) {
+    /* TODO */
+}
+
+/* medium (<=880px) */
+@media (max-width: 880px) {
+    /* TODO */
+}
+
+/* small (<=600px) */
+@media (max-width: 600px) {
+    /* TODO */
+}
