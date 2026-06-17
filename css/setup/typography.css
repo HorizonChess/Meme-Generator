@@ -1,3 +1,8 @@
+/* Poppins loaded from CSS (not <link> in HTML).
+   Google's stylesheet supplies the @font-face rules + hosted .woff2 files.
+   @import must be the first rule in the file to be valid. */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
 body {
     font-family: "Poppins", Arial, sans-serif;
 }

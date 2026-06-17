@@ -50,7 +50,6 @@
     transform: scale(1.08);
 }
 
-/* icons are black PNGs on transparent bg — flip them white to sit on the colored button */
 .icon-btn img {
     width: 22px;
     height: 22px;
@@ -66,29 +65,25 @@
     background-color: #22c55e;
 }
 
-/* row 3: font size (A-/A+) + color */
 .controls-side {
     display: flex;
     gap: 10px;
     align-items: center;
 }
 
-/* font + color buttons sit on white in the design.
-   TODO: replace with exact PSD hex values */
+/*TODO: replace with exact PSD hex values */
 .font-decrease,
 .font-increase,
 .color-btn {
     background-color: #ffffff;
 }
 
-/* the A-/A+ and palette glyphs are dark on white, so keep them un-inverted */
 .font-decrease img,
 .font-increase img,
 .color-btn img {
     filter: none;
 }
 
-/* the native color input is hidden; clicking the palette button opens it */
 .color-btn {
     position: relative;
     cursor: pointer;
