@@ -2,9 +2,12 @@
    mobile goes 2-col in setup/mq.css (per gallery mobile.png) */
 .gallery-container {
     margin: 2.5rem;
+    padding: 20px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     column-gap: 10px;
+    border-radius: var(--radius-panel);
+    background-color: var(--clr-panel);
 }
 
 .gallery-img {

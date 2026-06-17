@@ -81,9 +81,8 @@ function onColorPickerChange(ev) {
     renderMeme()
 }
 
-function onFontSizeChange(ev) {
-    const size = ev.target.value
-    setFontSize(size)
+function onChangeFontSize(diff) {
+    changeFontSize(diff)
     renderMeme()
 }
 

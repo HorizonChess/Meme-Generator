@@ -1,20 +1,6 @@
-/* desktop base: two columns (gallery | editor).
-   mobile overrides in setup/mq.css */
+/* one view (gallery OR editor) is shown at a time, centered */
 main {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
     max-width: 1200px;
-    margin: 0 auto;
-}
-
-.editor-section h2 {
-    margin: 2rem;
-    padding-top: 16px;
-    text-align: center;
-}
-
-.editor-container {
-    max-width: 500px;
     margin: 0 auto;
 }
 

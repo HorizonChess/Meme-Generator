@@ -15,42 +15,58 @@
     <header class="main-header">
         <a class="logo" href="#">Meme-Generator</a>
         <nav class="main-nav">
-            <button class="nav-link active">Gallery</button>
+            <button class="nav-link active" onclick="showView('gallery')">Gallery</button>
             <button class="nav-link">About</button>
             <button class="nav-toggle" aria-label="menu">&#9776;</button>
         </nav>
     </header>
 
     <main>
-        <section class="gallery-section">
+        <section class="gallery-section view">
             <h2>Gallery</h2>
             <div class="gallery-container"></div>
         </section>
 
-        <section class="editor-section">
-            <h2>Meme Editor</h2>
-            <div class="editor-container">
-                <canvas class="meme-canvas"></canvas>
+        <section class="editor-section view hidden">
+            <div class="editor-layout">
+                <div class="editor-container">
+                    <canvas class="meme-canvas"></canvas>
+                </div>
 
                 <div class="controls">
                     <div class="controls-lines">
-                        <span>Line 1:</span>
                         <input type="text" class="text-input" placeholder="Enter text here"
                             oninput="onTextInputChange(event,0)">
                     </div>
-                    <div class="controls-side">
-                        <span>Color-Picker:</span>
-                        <input type="color" class="color-picker" value="white" onchange="onColorPickerChange(event)">
-                        <span>Font Size:</span>
-                        <input type="number" class="font-size" value="24" min="8" max="42" step="1"
-                            onchange="onFontSizeChange(event)">
-                        <button class="add-line" onclick="onAddLine()">Add line</button>
-                        <button class="switch-line" onclick="onSwitchLine()">Switch Selected</button>
+
+                    <div class="controls-actions">
+                        <button class="icon-btn switch-line" onclick="onSwitchLine()" aria-label="Switch selected line"
+                            title="Switch selected line">
+                            <img src="resources/icons/up-and-down-opposite-double-arrows-side-by-side.png" alt="">
+                        </button>
+                        <button class="icon-btn add-line" onclick="onAddLine()" aria-label="Add line" title="Add line">
+                            <img src="resources/icons/add.png" alt="">
+                        </button>
                     </div>
+
+                    <div class="controls-side">
+                        <button class="icon-btn font-decrease" onclick="onChangeFontSize(-2)" aria-label="Decrease font size"
+                            title="Decrease font size">
+                            <img src="resources/icons/decrease font - icon.png" alt="">
+                        </button>
+                        <button class="icon-btn font-increase" onclick="onChangeFontSize(2)" aria-label="Increase font size"
+                            title="Increase font size">
+                            <img src="resources/icons/increase font - icon.png" alt="">
+                        </button>
+
+                        <label class="icon-btn color-btn" aria-label="Text color" title="Text color">
+                            <img src="resources/icons/paint-board-and-brush.png" alt="">
+                            <input type="color" class="color-picker" value="#ffffff" onchange="onColorPickerChange(event)">
+                        </label>
+                    </div>
+
+                    <a class="download-btn" href="#" onclick="onDownloadCanvas(this)">Download</a>
                 </div>
-                <p>
-                    <a href="#" onclick="onDownloadCanvas(this)">Download Meme</a>
-                </p>
             </div>
         </section>
 

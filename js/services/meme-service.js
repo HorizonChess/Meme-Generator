@@ -52,3 +52,9 @@ function setColor(color) {
 function setFontSize(size) {
     gMeme.lines.forEach(line => line.size = +size)
 }
+
+function changeFontSize(diff) {
+    const selectedLine = gMeme.lines[gMeme.selectedLineIdx]
+    const size = selectedLine.size + diff
+    selectedLine.size = Math.min(42, Math.max(8, size))
+}

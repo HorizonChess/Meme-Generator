@@ -15,5 +15,20 @@ function renderGallery() {
 function onImgSelect(elImg) {
     const imgId = +elImg.dataset.id
     setImg(imgId)
+    showView('editor')
+    resizeCanvas()
     renderMeme()
+}
+
+function showView(name) {
+    const elGallery = document.querySelector('.gallery-section')
+    const elEditor = document.querySelector('.editor-section')
+
+    if (name === 'editor') {
+        elGallery.classList.add('hidden')
+        elEditor.classList.remove('hidden')
+    } else {
+        elGallery.classList.remove('hidden')
+        elEditor.classList.add('hidden')
+    }
 }

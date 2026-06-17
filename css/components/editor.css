@@ -1,6 +1,22 @@
-.meme-canvas {
-    border-radius: 2%;
-    padding: 10px;
-    background-color: orange;
+/* editor: canvas on the left, control panel on the right */
+.editor-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    align-items: start;
+    justify-content: center;
+    padding: 24px;
+}
+
+/* fills its grid column; resizeCanvas() reads this width to size the canvas */
+.editor-container {
     width: 100%;
+}
+
+/* width/height are set by resizeCanvas() */
+.meme-canvas {
+    border-radius: var(--radius-canvas);
+    background-color: #ffffff;
+    border: 6px solid rgba(235, 238, 243, 0.09);
+    filter: drop-shadow(0.262px 4.993px 0px rgba(13, 14, 16, 0.65));
 }

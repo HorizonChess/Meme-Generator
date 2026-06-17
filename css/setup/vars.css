@@ -11,16 +11,22 @@
     /* accent green (active "Gallery" nav, search icon) */
     --clr-accent: #21ac91;
 
+    /* panel bg: gallery container + editor control panel */
+    --clr-panel: #383b42;
+
+    /* download button */
+    --clr-download: #8f44bb;
+
     /* TODO: confirm from PSD */
     --clr-text: #ffffff;
     --clr-text-muted: #9aa4b0;       /* TODO: exact muted label color */
-    --clr-panel: #2e3742;            /* TODO: gallery container bg */
-    --clr-card: #2e3742;             /* TODO: gallery image card bg/shadow */
     --clr-more: var(--clr-accent);   /* TODO: exact "More" chip bg */
 
     /* ===== radius ===== */
     --radius-header: 37px;
-    --radius-card: 6px;              /* TODO: exact gallery card radius */
+    --radius-panel: 10px;
+    --radius-canvas: 25px;
+    --radius-download: 15px;
 
     /* ===== spacing ===== */
     --space-sm: 8px;

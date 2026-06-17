@@ -14,14 +14,14 @@
         display: inline-block;
     }
 
-    /* gallery and editor stack into a single column */
-    main {
-        grid-template-columns: 1fr;
-    }
-
     /* gallery grid goes from 3 to 2 columns (per gallery mobile.png) */
     .gallery-container {
         grid-template-columns: 1fr 1fr;
+    }
+
+    /* editor canvas + panel stack vertically */
+    .editor-layout {
+        grid-template-columns: 1fr;
     }
 }
 
