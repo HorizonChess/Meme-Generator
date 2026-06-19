@@ -167,6 +167,18 @@ function onDownloadCanvas(elLink) {
     drawMeme(gImg, true)
 }
 
+function onSaveMeme() {
+    if (!gImg) return
+
+    // capture a clean (frame-free) thumbnail, then restore the highlight
+    drawMeme(gImg, false)
+    const dataUrl = gElCanvas.toDataURL()
+    drawMeme(gImg, true)
+
+    saveMeme(gMeme, dataUrl)
+    console.log('Meme saved')
+}
+
 function onAddLine() {
     addLine()
     gMeme.selectedLineIdx = gMeme.lines.length - 1

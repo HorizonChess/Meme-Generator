@@ -82,6 +82,10 @@
     background-color: #ef4444;
 }
 
+.save-meme {
+    background-color: #a855f7;
+}
+
 .controls-side {
     display: flex;
     gap: 10px;
