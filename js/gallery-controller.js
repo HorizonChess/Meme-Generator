@@ -12,6 +12,38 @@ function renderGallery() {
     elGallery.innerHTML = galleryHtml
 }
 
+function renderSavedGallery() {
+    const elSaved = document.querySelector('.saved-container')
+    const savedMemes = getSavedMemes()
+
+    if (!savedMemes.length) {
+        elSaved.innerHTML = `<p class="saved-empty">No saved memes yet.</p>`
+        return
+    }
+
+    const savedHtml = savedMemes.map(saved =>
+        `<div class="saved-item">
+            <img src="${saved.dataUrl}"
+                class="gallery-img"
+                data-id="${saved.id}"
+                onclick="onSavedMemeSelect(${saved.id})"
+                alt="Saved meme">
+            <button class="saved-delete" onclick="onDeleteSavedMeme(${saved.id}, event)"
+                title="Delete meme">&times;</button>
+        </div>`
+    ).join('')
+
+    elSaved.innerHTML = savedHtml
+}
+
+function onSavedMemeSelect(id) {
+    // filled in next step
+}
+
+function onDeleteSavedMeme(id, ev) {
+    // filled in next step
+}
+
 function onImgSelect(elImg) {
     const imgId = +elImg.dataset.id
     setImg(imgId)
@@ -23,12 +55,33 @@ function onImgSelect(elImg) {
 function showView(name) {
     const elGallery = document.querySelector('.gallery-section')
     const elEditor = document.querySelector('.editor-section')
+    const elSaved = document.querySelector('.saved-section')
 
-    if (name === 'editor') {
-        elGallery.classList.add('hidden')
-        elEditor.classList.remove('hidden')
-    } else {
-        elGallery.classList.remove('hidden')
-        elEditor.classList.add('hidden')
+    switch (name) {
+        case 'editor':
+            elGallery.classList.add('hidden')
+            elSaved.classList.add('hidden')
+            elEditor.classList.remove('hidden')
+            break
+        case 'saved':
+            elGallery.classList.add('hidden')
+            elEditor.classList.add('hidden')
+            elSaved.classList.remove('hidden')
+            renderSavedGallery()
+            break
+        default:
+            elEditor.classList.add('hidden')
+            elSaved.classList.add('hidden')
+            elGallery.classList.remove('hidden')
     }
+
+    updateActiveNav(name)
+}
+
+function updateActiveNav(name) {
+    const elNavLinks = document.querySelectorAll('.nav-link')
+    elNavLinks.forEach(elLink => {
+        const isActive = elLink.getAttribute('onclick') === `showView('${name}')`
+        elLink.classList.toggle('active', isActive)
+    })
 }

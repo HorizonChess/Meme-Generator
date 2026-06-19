@@ -1,3 +1,11 @@
 .hidden {
     display: none;
 }
+
+/* shared hover effect for all interactive elements (single source of truth) */
+.nav-link:hover,
+.icon-btn:hover,
+.download-btn:hover,
+.gallery-img:hover {
+    transform: scale(1.08);
+}

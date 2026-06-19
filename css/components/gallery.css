@@ -21,11 +21,33 @@
     transition: transform 0.2s;
 }
 
-.gallery-img:hover {
-    transform: scale(1.05);
-}
-
 .gallery-img.selected {
     outline: 3px solid var(--clr-accent);
     outline-offset: 2px;
+}
+
+/* saved memes: thumbnail + delete button overlay */
+.saved-item {
+    position: relative;
+}
+
+.saved-delete {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    width: 26px;
+    height: 26px;
+    border: none;
+    border-radius: 50%;
+    background-color: #ef4444;
+    color: #fff;
+    font-size: 18px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.saved-empty {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: var(--clr-text);
 }

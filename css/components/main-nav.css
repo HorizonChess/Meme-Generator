@@ -17,6 +17,7 @@
     font-weight: 500;
     padding: 8px 20px;
     border-radius: 22px;
+    transition: all 0.2s;
 }
 
 /* active link shows as a white pill with accent-green text (per design) */

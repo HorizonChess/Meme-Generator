@@ -14,6 +14,7 @@
         <a class="logo" href="#">Meme-Generator</a>
         <nav class="main-nav">
             <button class="nav-link active" onclick="showView('gallery')">Gallery</button>
+            <button class="nav-link" onclick="showView('saved')">My Memes</button>
             <button class="nav-link">About</button>
             <button class="nav-toggle" onclick="showView('gallery')" aria-label="menu">&#9776;</button>
         </nav>
@@ -71,6 +72,11 @@
                     <a class="download-btn" href="#" onclick="onDownloadCanvas(this)">Download</a>
                 </div>
             </div>
+        </section>
+
+        <!-- saved memes section -->
+        <section class="saved-section view hidden">
+            <div class="saved-container gallery-container"></div>
         </section>
 
     </main>
