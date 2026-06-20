@@ -27,6 +27,10 @@ function saveMeme(meme, dataUrl) {
 }
 
 function removeMeme(id) {
-    const savedMemes = getSavedMemes().filter(saved => saved.id !== id)
+    const savedMemes = getSavedMemes()
+    const idx = savedMemes.findIndex(saved => saved.id === id)
+    if (idx === -1) return null
+
+    savedMemes.splice(idx, 1)
     saveToStorage(STORAGE_KEY, savedMemes)
 }

@@ -16,6 +16,11 @@ let gMeme = {
 
 let gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
 
+function setMeme(meme) {
+    // deep copy so editing the loaded meme won't mutate the stored one
+    gMeme = JSON.parse(JSON.stringify(meme))
+}
+
 function addLine() {
     const line = {
         txt: ``,

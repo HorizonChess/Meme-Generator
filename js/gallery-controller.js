@@ -37,11 +37,20 @@ function renderSavedGallery() {
 }
 
 function onSavedMemeSelect(id) {
-    // filled in next step
+    const saved = getSavedMemes().find(saved => saved.id === id)
+    if (!saved) return
+
+    setMeme(saved.meme)
+    showView('editor')
+    resizeCanvas()
+    updateTextInput()
+    renderMeme()
 }
 
 function onDeleteSavedMeme(id, ev) {
-    // filled in next step
+    ev.stopPropagation()
+    removeMeme(id)
+    renderSavedGallery()
 }
 
 function onImgSelect(elImg) {

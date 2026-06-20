@@ -17,7 +17,6 @@
     /* download button */
     --clr-download: #8f44bb;
 
-    /* TODO: confirm from PSD */
     --clr-text: #ffffff;
     --clr-text-muted: #9aa4b0;       /* TODO: exact muted label color */
     --clr-more: var(--clr-accent);   /* TODO: exact "More" chip bg */
